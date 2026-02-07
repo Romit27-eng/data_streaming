@@ -25,7 +25,7 @@ def format_data(res):
     data['last_name'] = res['name']['last']
     data['gender'] = res['gender']
     data['address'] = f"{str(location['street']['number'])} {location['street']['name']}, " \
-                      f"{location['city']}, {location['state']}, {location['country']}"
+                    f"{location['city']}, {location['state']}, {location['country']}"
     data['post_code'] = location['postcode']
     data['email'] = res['email']
     data['username'] = res['login']['username']
@@ -58,9 +58,9 @@ def stream_data():
             continue
 
 with DAG('user_automation',
-         default_args=default_args,
-         schedule_interval='@daily',
-         catchup=False) as dag:
+        default_args=default_args,
+        schedule_interval='@daily',
+        catchup=False) as dag:
 
     streaming_task = PythonOperator(
         task_id='stream_data_from_api',
